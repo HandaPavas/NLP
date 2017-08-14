@@ -41,7 +41,7 @@ fileobject.seek(0)
 # Counting "sentences" in an article
 sentence_count = 0
 for content in fileobject.readlines():
-    match_object = re.search("^([0-9].+\.\s[0-9]).*|(!|\?)\s([A-Z])", content)
+    match_object = re.search("^(?!Mr|Ms|Mrs|Dr).*\.(\n|\s([A-Z])|(\"|\))\s)|^([0-9].+\.\s[0-9]).*|(!|\?)\s([A-Z])", content)
     if match_object:
         sentence_count += 1
 print "Number of sentences in an article are: ", sentence_count
