@@ -23,6 +23,7 @@ except IOError:
 
 with open(filename, 'r') as f:
     content = f.read()
+    content = re.sub(r'"|;|\(|\)|:|,|-', '', content)
     content = re.sub(r'\n\n', ' ', content)
     content = re.sub(r'\n', ' ', content)
     word_list = content.split()
@@ -51,21 +52,22 @@ sentence_count = 0
 with open(filename, 'r') as f:
     content = f.read()
 
+    # removes all 'lines' in the file
+    sentences = re.sub(r'\n(?<!\s\n)', '', content)
+
     # removes all 'blank lines' in the file
-    sentences = re.sub(r'\n\s*\n', '\n', content)
+    sentences = re.sub(r'\n\s*\n', '\n', sentences)
 
     # removes all 'special characters except ? and ! and .' in the file
-    sentences = re.sub(r'"|;|\(|\)|:|,', '', sentences)
+    sentences = re.sub(r'"|;|\(|\)|:|-', '', sentences)
 
     # classes any period after Mr/Mrs/Ms/Dr as ('not sentence boundaries')
     sentences = re.sub(r'(?<!Mr)(?<!Mrs)(?<!Ms)(?<!Dr)\.\s([A-Z])', r'.\n\1', sentences)
 
     # creates new line after exclamation mark
-    sentences = re.sub(r'!\s', '!\n', sentences)
+    sentences = re.sub(r'!\s([A-Z])', r'!\n\1', sentences)
 
     # creates new line after question mark
-    sentences = re.sub(r'\?\s', '?\n', sentences)
+    sentences = re.sub(r'\?\s([A-Z])', r'?\n\1', sentences)
 
 print "Number of sentences in an article are : ", len(sentences.split('\n'))
-
-
