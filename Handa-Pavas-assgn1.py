@@ -43,6 +43,9 @@ if lines[-1].split():
     paragraph_count += 1
 print "Number of paragraphs in an article are: ", paragraph_count
 
+# Close opened file
+fileobject.close()
+
 # Counting "sentences" in an article
 sentence_count = 0
 with open(filename, 'r') as f:
@@ -65,5 +68,4 @@ with open(filename, 'r') as f:
 
 print "Number of sentences in an article are : ", len(sentences.split('\n'))
 
-# Close opened file
-fileobject.close()
+
