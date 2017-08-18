@@ -3,23 +3,12 @@ import re
 import sys
 # open a file
 try:
-    filename = "/home/pavas/IIITD/NLP/Handa-Pavas-assign1-MT16040/Development Set.txt"
+    filename = "/home/pavas/IIITD/NLP/Handa-Pavas-assign1-MT16040/Test Set 1.txt"
     fileobject = open(filename, "r")
 except IOError:
     print 'Cannot open file %s for reading' % filename
     sys.exit(0)
 
-# Counting "words" in an article
-# wordcount = 0
-# for line in fileobject.readlines():
-#    if line != '\n':
-#        for i in range(1, len(line)):
-#            # extra spaces is taken care of
-#            if line[i] in " " and line[i - 1] not in " ":
-#                wordcount += 1
-#        wordcount += 1
-
-# print "Number of words in an article are: ", wordcount
 
 with open(filename, 'r') as f:
     content = f.read()
@@ -33,6 +22,7 @@ print "Number of words in an article are: ", len(word_list)
 fileobject.seek(0)
 
 # Counting "paragraphs" in an article
+
 paragraph_count = 0
 lines = fileobject.read().splitlines()
 for i in range(1, len(lines)):
