@@ -3,7 +3,7 @@ import re
 import sys
 # open a file
 try:
-    filename = "/home/pavas/IIITD/NLP/Assignment 1/Test Set 1.txt"
+    filename = "/home/pavas/IIITD/NLP/Handa-Pavas-assign1-MT16040/Development Set.txt"
     fileobject = open(filename, "r")
 except IOError:
     print 'Cannot open file %s for reading' % filename
