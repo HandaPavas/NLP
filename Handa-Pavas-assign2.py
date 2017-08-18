@@ -17,12 +17,12 @@ def edit_distance(string_1, len_string1, string_2, len_string2):
                 matrix[i][j] = i
 
             # if element in both string are different, then there are three possibilities:
-            # 1. Insert
-            # 2. Delete
-            # 3. Substitute
+            # 1. Insert (cost = 1)
+            # 2. Delete (cost = 1)
+            # 3. Substitute (cost = 2)
             elif string_1[i-1] != string_2[j-1]:
                 # if insert results in less operation
-                matrix[i][j] = min(matrix[i][j-1], matrix[i-1][j], matrix[i-1][j-1]) + 1
+                matrix[i][j] = min(matrix[i][j-1]+1, matrix[i-1][j]+1, matrix[i-1][j-1]+2)
 
             # if element in both string are same, then do nothing get the previous number of operations
             else:
@@ -31,8 +31,7 @@ def edit_distance(string_1, len_string1, string_2, len_string2):
 print ("Enter both strings in same case !!!!")
 string1 = raw_input("Enter First String: ")
 string2 = raw_input("Enter Second String: ")
-print 'OUTPUT 1: '
-print "Minimum distance is: ", edit_distance(string1, len(string1), string2, len(string2))
+print 'OUTPUT 1: Minimum distance is: ', edit_distance(string1, len(string1), string2, len(string2))
 print '\n'
 
 
@@ -78,7 +77,7 @@ def alignment(string_1, len_string_1, string_2, len_string_2):
 
     elif j == -1 and i != -1:
         string_2 = ('*' * (i + 1)) + string_2
-    print 'OUTPUT 2:'
+    print 'OUTPUT 2: Here is the alignment:'
     print(string_1)
     length = len(string_1)
     print '|' * length
