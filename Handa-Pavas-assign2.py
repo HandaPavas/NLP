@@ -28,7 +28,7 @@ def edit_distance(string_1, len_string1, string_2, len_string2):
             else:
                 matrix[i][j] = matrix[i-1][j-1]
     return matrix[i][j]
-print ("Enter strings in Uppercase !!!!")
+print ("Enter both strings in same case !!!!")
 string1 = raw_input("Enter First String: ")
 string2 = raw_input("Enter Second String: ")
 print 'OUTPUT 1: '
@@ -85,20 +85,20 @@ def alignment(string_1, len_string_1, string_2, len_string_2):
     print(string_2)
 
     i = 0
-    opertion = ""
+    operation = ""
     while length != 0:
         if string_1[i] != string_2[i]:
             if string_1[i] != '*' and string_2[i] != '*':
-                opertion += 's'
+                operation += 's'
             elif string_1[i] == '*':
-                opertion += 'i'
+                operation += 'i'
             else:
-                opertion += 'd'
+                operation += 'd'
         else:
-            opertion += ' '
+            operation += ' '
         i += 1
         length -= 1
-    print opertion
+    print operation
 
 
 alignment(string1, len(string1), string2, len(string2))
